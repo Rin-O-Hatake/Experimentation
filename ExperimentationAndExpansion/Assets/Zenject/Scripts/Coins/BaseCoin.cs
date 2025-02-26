@@ -1,10 +1,14 @@
-namespace Zenject.Scripts
+namespace Zenject.Scripts.Coins
 {
     public abstract class BaseCoin
     {
-        protected abstract int _count { get; set;}
+        protected int _countInTable;
+        protected int _countInBag;
         protected abstract int _defaultCoins { get; set; }
 
-        public abstract void SetCoin(int count = 1);
+        
+        public int CountCoins => _countInBag;
+        
+        public abstract void AddCoin();
     }
 }

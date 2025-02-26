@@ -1,44 +1,34 @@
 using UnityEngine;
-using Zenject.Scripts.Coins;
 
-namespace Zenject.Scripts
+namespace Zenject.Scripts.Coins
 {
-    public class GoldCoin : BaseCoin, ISkillCoin
+    public class GoldCoin : BaseCoin
     {
         #region Fields
-
-        protected override int _count { get; set; }
-
+        
         protected sealed override int _defaultCoins { get; set; }
 
         protected int _maxCoinsCastUltimate;
-        protected int _maxCoinsCastSkills;
-
+        
         #endregion
 
         #region OverLoad
 
-        public GoldCoin(int defaultCoins, int maxCoinsCastUltimate, int maxCoinsCastSkills)
+        public GoldCoin(int defaultCoins, int maxCoinsCastUltimate)
         {
-            _maxCoinsCastSkills = maxCoinsCastSkills;
             _maxCoinsCastUltimate = maxCoinsCastUltimate;
             _defaultCoins = defaultCoins;
         }
 
         #endregion
 
-        public override void SetCoin(int count = 1)
+        public override void AddCoin()
         {
-            _count += count;
-            if (_count >= _maxCoinsCastUltimate)
+            _countInTable ++;
+            if (_countInTable >= _maxCoinsCastUltimate)
             {
                 ((ISkillCoin)this).TriggeringSkillCoin();
             }
-        }
-        
-        void ISkillCoin.TriggeringSkillCoin()
-        {
-            Debug.Log("You have won, congratulations!");
         }
     }
 }

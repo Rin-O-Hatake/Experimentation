@@ -55,7 +55,7 @@ namespace Zenject.Scripts
         private void CreateAndInjectGoldenCoin()
         {
             CoinData coinData = _coinConfig.Coins.First(coin => coin.CoinType == CoinsEnum.GoldCoin);
-            GoldCoin goldCoin = new GoldCoin(coinData.DefaultCoins, coinData.MaxCoinsCastSkill, coinData.MaxCoinsCastUltimate);
+            GoldCoin goldCoin = new GoldCoin(coinData.DefaultCoins, coinData.MaxCoinsCastUltimate);
             InjectCoin(goldCoin);
         }
 

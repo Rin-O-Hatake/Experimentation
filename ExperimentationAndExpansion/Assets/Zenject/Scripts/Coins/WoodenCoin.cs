@@ -1,13 +1,9 @@
-using UnityEngine;
-using Zenject.Scripts.Coins;
-
-namespace Zenject.Scripts
+namespace Zenject.Scripts.Coins
 {
-    public class WoodenCoin : BaseCoin, IRemoveCoin
+    public class WoodenCoin : BaseCoin, IRemoveCoin, ISetCoin
     {
         #region Field
-
-        protected override int _count { get; set; }
+        
         protected override int _defaultCoins { get; set; }
 
         private int _maxCoinsCastSkills;
@@ -23,14 +19,21 @@ namespace Zenject.Scripts
         }
 
         #endregion
-        
-        public override void SetCoin(int count = 1)
-            => _count += count;
+
+        public override void AddCoin()
+        {
+            _countInTable ++;   
+        }
         
 
         public void RemoveCoin()
         {
-            _count --;
+            _countInTable --;
+        }
+
+        public void SetCoin(int amount)
+        {
+            _countInBag += amount;
         }
     }
 }

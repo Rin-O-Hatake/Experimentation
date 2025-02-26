@@ -5,8 +5,7 @@ namespace Zenject.Scripts.Coins
     public class BlackCoin : BaseCoin, ISkillCoin
     {
         #region Field
-
-        protected override int _count { get; set; }
+        
         protected override int _defaultCoins { get; set; }
         protected int _maxCoinsCastUltimate;
         protected int _maxCoinsCastSkills;
@@ -24,10 +23,10 @@ namespace Zenject.Scripts.Coins
 
         #endregion
 
-        public override void SetCoin(int count = 1)
+        public override void AddCoin()
         {
-            _count += count;
-            if (_count >= _maxCoinsCastUltimate)
+            _countInTable ++;
+            if (_countInTable >= _maxCoinsCastUltimate)
             {
                 ((ISkillCoin)this).TriggeringSkillCoin();
             }

@@ -9,4 +9,10 @@ namespace Zenject.Scripts.Coins
     {
         public void RemoveCoin();
     }
+    
+    public interface ISetCoin
+    {
+        public void SetCoin(int amount);
+    }
+
 }

@@ -19,7 +19,16 @@ namespace Zenject.Scripts
             _goldCoin = goldCoin;
             _blackCoin = blackCoin;
             _woodenCoin = woodenCoin;
-            Debug.Log($"{_goldCoin == null}  {_blackCoin == null}  {_woodenCoin == null}");
+        }
+
+        public void AddRandomCoin()
+        {
+            
+        }
+
+        public void EndSetCoin()
+        {
+            
         }
     }
 }
