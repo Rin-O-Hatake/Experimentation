@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Zenject.Scripts.Coins
 {
     public abstract class BaseCoin
@@ -23,9 +21,10 @@ namespace Zenject.Scripts.Coins
             _coinData = coinData;
         }
 
-        public virtual void ResetCoins()
+        public virtual void ResetCoins(bool stateIsEndState = true)
         {
-            
+            _countInBag += _countInTable;
+            _countInTable = 0;
         }
     }
 }

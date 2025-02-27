@@ -58,38 +58,8 @@ namespace Zenject.Scripts
             }
             
             Container.Bind<List<BaseCoin>>().FromInstance(_allCoins);
-            // CreateAndInjectGoldenCoin();
-            // CreateAndInjectDeathCoin();
-            // CreateAndInjectWoodCoin();
         }
-
-        // private void CreateAndInjectWoodCoin()
-        // {
-        //     CoinData coinData = _coinConfig.Coins.First(coin => coin.CoinType == CoinsEnum.WoodCoin);
-        //     WoodenCoin woodCoin = new WoodenCoin(coinData);
-        //     TInjectCoin(woodCoin);
-        // }
-        //
-        // private void CreateAndInjectDeathCoin()
-        // {
-        //     CoinData coinData = _coinConfig.Coins.First(coin => coin.CoinType == CoinsEnum.BlackCoin);
-        //     BlackCoin blackCoin = new BlackCoin(coinData);
-        //     TInjectCoin(blackCoin);
-        // }
-        //
-        // private void CreateAndInjectGoldenCoin()
-        // {
-        //     CoinData coinData = _coinConfig.Coins.First(coin => coin.CoinType == CoinsEnum.GoldCoin);
-        //     GoldCoin goldCoin = new GoldCoin(coinData);
-        //     TInjectCoin(goldCoin);
-        // }
-        //
-        // private void TInjectCoin<T>(T typeCoin) where T : BaseCoin
-        // {
-        //     Container.Bind<T>().FromInstance(typeCoin);
-        //     Container.Bind<BaseCoin>().To<T>().AsSingle();
-        // }
-
+        
         #endregion
     }
 }

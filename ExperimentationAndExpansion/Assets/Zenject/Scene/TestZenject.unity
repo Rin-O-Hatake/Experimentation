@@ -225,6 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 482817772}
+  - component: {fileID: 482817773}
   m_Layer: 5
   m_Name: Root Gold Coin
   m_TagString: Untagged
@@ -251,6 +252,30 @@ RectTransform:
   m_AnchoredPosition: {x: -282.1576, y: 170}
   m_SizeDelta: {x: 564.3152, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &482817773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482817771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 20, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &574907744
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +493,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonAddRandomCoin: {fileID: 7709891059059046871}
   _buttonEndSet: {fileID: 1280460354}
-  _bagContent: {fileID: 1663548274}
+  _bagContent: {fileID: 482817772}
+  _saveContent: {fileID: 482817772}
   _coinUIPrefab: {fileID: 8645080438175927318, guid: 633c15e8ff464764aa92992dee057429, type: 3}
 --- !u!114 &1025088218
 MonoBehaviour:
@@ -742,7 +768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3250798772928409267, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 304.48
       objectReference: {fileID: 0}
     - target: {fileID: 3250798772928409267, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_SizeDelta.y
@@ -806,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4967865716983797733, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 117.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4967865716983797733, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -834,7 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7996796718906047967, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 304.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7996796718906047967, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1215,7 +1241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3250798772928409267, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 304.13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3250798772928409267, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1279,7 +1305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4967865716983797733, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 263.13
       objectReference: {fileID: 0}
     - target: {fileID: 4967865716983797733, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1299,7 +1325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7996796718906047967, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 304.13
       objectReference: {fileID: 0}
     - target: {fileID: 7996796718906047967, guid: a009ff0842c275f4e8fe0a9afe45aa28, type: 3}
       propertyPath: m_SizeDelta.y

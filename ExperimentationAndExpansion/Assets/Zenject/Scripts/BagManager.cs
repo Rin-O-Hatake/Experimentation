@@ -36,8 +36,8 @@ namespace Zenject.Scripts
                 return;    
             }
             
-            baseCoin.AddCoin();
             createCoin?.Invoke(baseCoin);
+            baseCoin.AddCoin();
 
             return;
 
@@ -62,11 +62,11 @@ namespace Zenject.Scripts
             }
         }
 
-        public void EndSetCoin()
+        public void EndSetCoin(bool stateIsEndState = true)
         {
             foreach (var coin in _allCoins)
             {
-                
+                coin.ResetCoins(stateIsEndState);
             }
         }
     }

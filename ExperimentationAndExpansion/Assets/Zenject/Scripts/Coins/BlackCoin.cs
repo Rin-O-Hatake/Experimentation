@@ -10,13 +10,15 @@ namespace Zenject.Scripts.Coins
         protected override CoinsEnum _coinsType { get; } = CoinsEnum.BlackCoin;
 
         protected Action _castSkillAction;
+        protected Action _castUltimateAction;
         
         #endregion
 
         #region Inits
 
-        public void InitCoinActions(Action castSkill)
+        public void InitCoinActions(Action castSkill, Action castUltimateAction)
         {
+            _castUltimateAction = castUltimateAction;
             _castSkillAction = castSkill;
         }
 
@@ -49,6 +51,7 @@ namespace Zenject.Scripts.Coins
 
         public void TriggeringSkillCoin()
         {
+            _castUltimateAction?.Invoke();
             Debug.Log("Game over");
         }
     }

@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using UnityEngine;
 using Zenject.Scripts.Coins;
@@ -20,6 +19,7 @@ namespace Zenject.Scripts.UI
             _bagManager = bagManager;
             _view = bagView;
             InitView();
+            InjectCoins();
         }
 
         protected void InitView()
@@ -30,10 +30,13 @@ namespace Zenject.Scripts.UI
         protected void InjectCoins()
         {
             (_bagManager.AllCoins.First(coin => coin.CoinsType == CoinsEnum.WoodCoin) as WoodenCoin)?.InitCoinActions(CastSkillWood);
-            (_bagManager.AllCoins.First(coin => coin.CoinsType == CoinsEnum.BlackCoin) as BlackCoin)?.InitCoinActions(CastSkillBlack);
+            (_bagManager.AllCoins.First(coin => coin.CoinsType == CoinsEnum.BlackCoin) as BlackCoin)?.InitCoinActions(CastSkillBlack, CastUltimateBlack);
+            (_bagManager.AllCoins.First(coin => coin.CoinsType == CoinsEnum.GoldCoin) as GoldCoin)?.InitCoinAction(CastSkillGold, CastUltimateGold);
         }
 
         #region Skills/Ultimates
+
+        #region Skills
 
         protected void CastSkillWood()
         {
@@ -42,9 +45,32 @@ namespace Zenject.Scripts.UI
 
         protected void CastSkillBlack()
         {
+            _bagManager.EndSetCoin(false);
             _view.BlackCoinSkill();
         }
 
+        protected void CastSkillGold(int count, GoldCoin goldCoin)
+        {
+            _view.GoldCoinSkill(count, goldCoin);
+        }
+
+
+        #endregion
+
+        #region Ultimates
+
+        protected void CastUltimateGold()
+        {
+            _view.WinsOpenPanel();
+        }
+        
+        protected void CastUltimateBlack()
+        {
+            _view.LoseOpenPanel();
+        }
+
+        #endregion
+        
         #endregion
     }
 }

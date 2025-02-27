@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject.Scripts.Coins;
@@ -23,6 +24,17 @@ namespace Zenject.Scripts.UI
         {
             _coinType = coinType;
             _image.sprite = sprite;
+        }
+
+        public void FadeOutCoin()
+        {
+            _image.DOFade(0, 2)
+                .OnComplete(DestroyCoinUIView);
+        }
+
+        private void DestroyCoinUIView()
+        {
+            Destroy(gameObject);
         }
     }
 }
