@@ -16,12 +16,15 @@ MonoBehaviour:
   - _defaultCoins: 4
     _maxCoinsCastUltimate: 4
     _maxCoinsCastSkill: 2
-    _coinType: 0
+    _coinType: 1
+    _icon: {fileID: 21300000, guid: dbfe302e21c4ca64c8f63d192a45b429, type: 3}
   - _defaultCoins: 4
     _maxCoinsCastUltimate: 10
     _maxCoinsCastSkill: 2
-    _coinType: 1
+    _coinType: 2
+    _icon: {fileID: 21300000, guid: 9a9c68c1ec37ff94a98e8aa66e8126f5, type: 3}
   - _defaultCoins: 4
     _maxCoinsCastUltimate: -1
     _maxCoinsCastSkill: 2
-    _coinType: 2
+    _coinType: 3
+    _icon: {fileID: 21300000, guid: 7dcd7cd47c076934dacce4f676d46794, type: 3}

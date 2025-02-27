@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Zenject.Scripts.Coins
 {
@@ -28,6 +29,7 @@ namespace Zenject.Scripts.Coins
         [SerializeField] private int _maxCoinsCastUltimate;
         [SerializeField] private int _maxCoinsCastSkill;
         [SerializeField] private CoinsEnum _coinType;
+        [SerializeField] private Sprite _icon;
 
         #region Properties
 
@@ -36,11 +38,10 @@ namespace Zenject.Scripts.Coins
         public int MaxCoinsCastUltimate => _maxCoinsCastUltimate;
         public int MaxCoinsCastSkill => _maxCoinsCastSkill;
         public CoinsEnum CoinType => _coinType;
-
-
+        public Sprite Icon => _icon;
 
         #endregion
-        
+
         #endregion
     }
 }

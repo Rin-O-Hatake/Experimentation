@@ -1,32 +1,47 @@
+using System;
 using UnityEngine;
 
 namespace Zenject.Scripts.Coins
 {
     public class BlackCoin : BaseCoin, ISkillCoin
     {
-        #region Field
-        
-        protected override int _defaultCoins { get; set; }
-        protected int _maxCoinsCastUltimate;
-        protected int _maxCoinsCastSkills;
+        #region Fields
 
+        protected override CoinsEnum _coinsType { get; } = CoinsEnum.BlackCoin;
+
+        protected Action _castSkillAction;
+        
         #endregion
 
-        #region Overload
+        #region Inits
 
-        public BlackCoin(int defaultCoins, int maxCoinsCastUltimate, int maxCoinsCastSkills)
+        public void InitCoinActions(Action castSkill)
         {
-            _maxCoinsCastSkills = maxCoinsCastSkills;
-            _maxCoinsCastUltimate = maxCoinsCastUltimate;
-            _defaultCoins = defaultCoins;
+            _castSkillAction = castSkill;
         }
 
+        public override void Init(CoinData coinData)
+        {
+            base.Init(coinData);
+            _countInBag = _coinData.DefaultCoins;
+        }
+        
         #endregion
 
         public override void AddCoin()
         {
             _countInTable ++;
-            if (_countInTable >= _maxCoinsCastUltimate)
+            _countInBag--;
+
+            if (_countInTable >= _coinData.MaxCoinsCastSkill)
+            {
+                _castSkillAction?.Invoke();
+                _countInBag++;
+                
+                Debug.Log("Cast skill black coin: add 1 coin in bag");
+            }
+            
+            if (_countInTable + _countInBag >= _coinData.MaxCoinsCastUltimate)
             {
                 ((ISkillCoin)this).TriggeringSkillCoin();
             }

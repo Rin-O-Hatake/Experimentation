@@ -7,7 +7,7 @@ namespace Zenject.Scripts.Coins
     
     public interface IRemoveCoin
     {
-        public void RemoveCoin();
+        public void RemoveCoin(int count);
     }
     
     public interface ISetCoin

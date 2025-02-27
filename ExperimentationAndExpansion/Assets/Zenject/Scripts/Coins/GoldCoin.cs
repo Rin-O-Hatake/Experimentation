@@ -5,29 +5,25 @@ namespace Zenject.Scripts.Coins
     public class GoldCoin : BaseCoin
     {
         #region Fields
-        
-        protected sealed override int _defaultCoins { get; set; }
 
-        protected int _maxCoinsCastUltimate;
-        
+        protected override CoinsEnum _coinsType { get;} = CoinsEnum.GoldCoin;
+
         #endregion
 
-        #region OverLoad
-
-        public GoldCoin(int defaultCoins, int maxCoinsCastUltimate)
+        public override void Init(CoinData coinData)
         {
-            _maxCoinsCastUltimate = maxCoinsCastUltimate;
-            _defaultCoins = defaultCoins;
+            base.Init(coinData);
+            _countInBag = _coinData.DefaultCoins;
         }
-
-        #endregion
-
+        
         public override void AddCoin()
         {
             _countInTable ++;
-            if (_countInTable >= _maxCoinsCastUltimate)
+            _countInBag--;
+            
+            if (_countInTable + _countInBag >= _coinData.MaxCoinsCastUltimate)
             {
-                ((ISkillCoin)this).TriggeringSkillCoin();
+                Debug.Log("Wins");
             }
         }
     }
