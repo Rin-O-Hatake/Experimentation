@@ -19,7 +19,7 @@ MonoBehaviour:
     _coinType: 1
     _icon: {fileID: 21300000, guid: dbfe302e21c4ca64c8f63d192a45b429, type: 3}
   - _defaultCoins: 4
-    _maxCoinsCastUltimate: 10
+    _maxCoinsCastUltimate: 8
     _maxCoinsCastSkill: 2
     _coinType: 2
     _icon: {fileID: 21300000, guid: 9a9c68c1ec37ff94a98e8aa66e8126f5, type: 3}
