@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject.Scripts.Coins;
 
-namespace Zenject.Scripts.UI
+namespace MoneyProject.Scripts.UI
 {
     public class CoinUIView : MonoBehaviour
     {

@@ -1,15 +1,18 @@
+using System;
 using System.Linq;
-using UnityEngine;
+using MVVM;
+using Zenject;
+using Zenject.Scripts;
 using Zenject.Scripts.Coins;
 
-namespace Zenject.Scripts.UI
+namespace MoneyProject.Scripts.UI
 {
-    public class BagModelView : MonoBehaviour
+    public class BagModelView
     {
         #region Fields
-        
-        protected BagView _view;
-        protected BagManager _bagManager;
+
+        private BagView _view;
+        private BagManager _bagManager;
 
         #endregion
 
@@ -18,16 +21,22 @@ namespace Zenject.Scripts.UI
         {
             _bagManager = bagManager;
             _view = bagView;
-            InitView();
+            // InitView();
             InjectCoins();
         }
 
-        protected void InitView()
+        [Method("OnBuyClick")]
+        public void Button()
         {
-            _view.Initialize(_bagManager.AddRandomCoin, _bagManager.EndSetCoin);
+            
         }
 
-        protected void InjectCoins()
+        // private void InitView()
+        // {
+        //     _view.Initialize(_bagManager.AddRandomCoin, _bagManager.EndSetCoin);
+        // }
+
+        private void InjectCoins()
         {
             (_bagManager.AllCoins.First(coin => coin.CoinsType == CoinsEnum.WoodCoin) as WoodenCoin)?.InitCoinActions(CastSkillWood);
             (_bagManager.AllCoins.First(coin => coin.CoinsType == CoinsEnum.BlackCoin) as BlackCoin)?.InitCoinActions(CastSkillBlack, CastUltimateBlack);
@@ -38,18 +47,18 @@ namespace Zenject.Scripts.UI
 
         #region Skills
 
-        protected void CastSkillWood()
+        private void CastSkillWood()
         {
             _view.WoodCoinSkill();
         }
 
-        protected void CastSkillBlack()
+        private void CastSkillBlack()
         {
             _bagManager.EndSetCoin(false);
             _view.BlackCoinSkill();
         }
 
-        protected void CastSkillGold(int count, GoldCoin goldCoin)
+        private void CastSkillGold(int count, GoldCoin goldCoin)
         {
             _view.GoldCoinSkill(count, goldCoin);
         }
@@ -59,12 +68,12 @@ namespace Zenject.Scripts.UI
 
         #region Ultimates
 
-        protected void CastUltimateGold()
+        private void CastUltimateGold()
         {
             _view.WinsOpenPanel();
         }
-        
-        protected void CastUltimateBlack()
+
+        private void CastUltimateBlack()
         {
             _view.LoseOpenPanel();
         }

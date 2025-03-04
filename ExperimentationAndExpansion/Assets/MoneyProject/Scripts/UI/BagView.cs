@@ -1,17 +1,19 @@
 using System;
 using System.Collections.Generic;
+using MVVM;
 using Plugins.AltoCityUIPack.Scripts.Button;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject.Scripts.Coins;
 
-namespace Zenject.Scripts.UI
+namespace MoneyProject.Scripts.UI
 {
     public class BagView : MonoBehaviour
     {
         #region Fields
         
         [Title("Buttons")]
+        [Data("OnBuyClick")]
         [SerializeField] private UIButtonManagerCustom _buttonAddRandomCoin;
         [SerializeField] private UIButtonManagerCustom _buttonEndSet;
 

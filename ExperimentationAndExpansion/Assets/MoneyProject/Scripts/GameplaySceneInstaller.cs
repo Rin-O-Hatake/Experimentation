@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using MoneyProject.Scripts.UI;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject.Scripts.Coins;
-using Zenject.Scripts.UI;
 
 namespace Zenject.Scripts
 {
