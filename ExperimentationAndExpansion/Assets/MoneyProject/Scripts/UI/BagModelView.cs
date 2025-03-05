@@ -1,18 +1,17 @@
-using System;
 using System.Linq;
-using MVVM;
+using UnityEngine;
 using Zenject;
 using Zenject.Scripts;
 using Zenject.Scripts.Coins;
 
 namespace MoneyProject.Scripts.UI
 {
-    public class BagModelView
+    public class BagModelView : MonoBehaviour
     {
         #region Fields
-
-        private BagView _view;
-        private BagManager _bagManager;
+        
+        protected BagView _view;
+        protected BagManager _bagManager;
 
         #endregion
 
@@ -21,22 +20,16 @@ namespace MoneyProject.Scripts.UI
         {
             _bagManager = bagManager;
             _view = bagView;
-            // InitView();
+            InitView();
             InjectCoins();
         }
 
-        [Method("OnBuyClick")]
-        public void Button()
+        protected void InitView()
         {
-            
+            _view.Initialize(_bagManager.AddRandomCoin, _bagManager.EndSetCoin);
         }
 
-        // private void InitView()
-        // {
-        //     _view.Initialize(_bagManager.AddRandomCoin, _bagManager.EndSetCoin);
-        // }
-
-        private void InjectCoins()
+        protected void InjectCoins()
         {
             (_bagManager.AllCoins.First(coin => coin.CoinsType == CoinsEnum.WoodCoin) as WoodenCoin)?.InitCoinActions(CastSkillWood);
             (_bagManager.AllCoins.First(coin => coin.CoinsType == CoinsEnum.BlackCoin) as BlackCoin)?.InitCoinActions(CastSkillBlack, CastUltimateBlack);
@@ -47,18 +40,18 @@ namespace MoneyProject.Scripts.UI
 
         #region Skills
 
-        private void CastSkillWood()
+        protected void CastSkillWood()
         {
             _view.WoodCoinSkill();
         }
 
-        private void CastSkillBlack()
+        protected void CastSkillBlack()
         {
             _bagManager.EndSetCoin(false);
             _view.BlackCoinSkill();
         }
 
-        private void CastSkillGold(int count, GoldCoin goldCoin)
+        protected void CastSkillGold(int count, GoldCoin goldCoin)
         {
             _view.GoldCoinSkill(count, goldCoin);
         }
@@ -68,12 +61,12 @@ namespace MoneyProject.Scripts.UI
 
         #region Ultimates
 
-        private void CastUltimateGold()
+        protected void CastUltimateGold()
         {
             _view.WinsOpenPanel();
         }
-
-        private void CastUltimateBlack()
+        
+        protected void CastUltimateBlack()
         {
             _view.LoseOpenPanel();
         }
