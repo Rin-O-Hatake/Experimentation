@@ -31,9 +31,9 @@ namespace MoneyProject.Scripts.UI
 
         protected void InjectCoins()
         {
-            (_bagManager.AllCoins.First(coin => coin.CoinsType == CoinsEnum.WoodCoin) as WoodenCoin)?.InitCoinActions(CastSkillWood);
-            (_bagManager.AllCoins.First(coin => coin.CoinsType == CoinsEnum.BlackCoin) as BlackCoin)?.InitCoinActions(CastSkillBlack, CastUltimateBlack);
-            (_bagManager.AllCoins.First(coin => coin.CoinsType == CoinsEnum.GoldCoin) as GoldCoin)?.InitCoinAction(CastSkillGold, CastUltimateGold);
+            (_bagManager[CoinsEnum.WoodCoin] as WoodenCoin)?.InitCoinActions(CastSkillWood);
+            (_bagManager[CoinsEnum.BlackCoin] as BlackCoin)?.InitCoinActions(CastSkillBlack, CastUltimateBlack);
+            (_bagManager[CoinsEnum.GoldCoin] as GoldCoin)?.InitCoinAction(CastSkillGold, CastUltimateGold);
         }
 
         #region Skills/Ultimates

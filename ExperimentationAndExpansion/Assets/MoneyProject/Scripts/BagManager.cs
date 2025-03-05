@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Zenject;
 using Zenject.Scripts.Coins;
 using Random = UnityEngine.Random;
 
-namespace Zenject.Scripts
+namespace MoneyProject.Scripts
 {
     public class BagManager : MonoBehaviour
     {
@@ -14,7 +16,13 @@ namespace Zenject.Scripts
 
         #region Properties
 
-        public BaseCoin[] AllCoins => _allCoins;
+        public BaseCoin this[CoinsEnum typeCoin]
+        {
+            get
+            {
+                return _allCoins.SingleOrDefault(coin => coin.CoinsType == typeCoin);
+            }
+        }
 
         #endregion
 
