@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MoneyProject/Scene/S_MoneyRandom.unity
+    path: Assets/Experimentation/MoneyProject/Scene/S_MoneyRandom.unity
     guid: bba453d777a7ba94083db6b8519e25a8
   m_configObjects: {}
