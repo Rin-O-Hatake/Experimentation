@@ -1,4 +1,3 @@
-using MoneyProject.Scripts.UI;
 using UnityEngine;
 using Zenject;
 using Zenject.Scripts.Coins;
@@ -19,13 +18,7 @@ namespace Experimentation.MoneyProject.Scripts.UI
         {
             _bagManager = bagManager;
             _view = bagView;
-            InitView();
             InjectCoins();
-        }
-
-        protected void InitView()
-        {
-            _view.Initialize(_bagManager.AddRandomCoin, _bagManager.EndSetCoin);
         }
 
         protected void InjectCoins()

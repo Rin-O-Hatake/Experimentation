@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Experimentation.MoneyProject.Scripts.Data.Interfaces;
 using UnityEngine;
 using Zenject;
 using Zenject.Scripts.Coins;
@@ -8,11 +8,13 @@ using Random = UnityEngine.Random;
 
 namespace Experimentation.MoneyProject.Scripts
 {
-    public class BagManager : MonoBehaviour
+    public class BagManager : IAddRandomCoin, ISaveCoins
     {
         #region Fields
         
         private BaseCoin[] _allCoins;
+        
+        private List<IShowCoins> _showCoinsInterfaces = new List<IShowCoins>();
 
         #region Properties
 
@@ -28,13 +30,23 @@ namespace Experimentation.MoneyProject.Scripts
 
         #endregion
 
+        #region Initialize
+
         [Inject]
         public void Construct(List<BaseCoin> allCoins)
         {
             _allCoins = allCoins.ToArray();
         }
 
-        public void AddRandomCoin(Action<BaseCoin> createCoin)
+        [Inject]
+        public void Construct(IShowCoins showCoins)
+        {
+            _showCoinsInterfaces.Add(showCoins);
+        }
+
+        #endregion
+
+        public void AddRandomCoin()
         {
             BaseCoin baseCoin = RandomCoin();
 
@@ -43,8 +55,12 @@ namespace Experimentation.MoneyProject.Scripts
                 Debug.Log("We're out of coins");
                 return;    
             }
+
+            foreach (var showCoinsInterface in _showCoinsInterfaces)
+            {
+                showCoinsInterface.ShowCoins(baseCoin);
+            }
             
-            createCoin?.Invoke(baseCoin);
             baseCoin.AddCoin();
 
             return;
@@ -76,6 +92,11 @@ namespace Experimentation.MoneyProject.Scripts
             {
                 coin.ResetCoins(stateIsEndState);
             }
+        }
+
+        public void SaveCoins()
+        {
+            EndSetCoin();
         }
     }
 }

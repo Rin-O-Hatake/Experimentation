@@ -16,7 +16,7 @@ namespace Experimentation.ECS_Project.Scripts.Enemy
                 ref var movableComponent = ref _movableFilter.Get1(filter);
                 ref var directionComponent = ref _movableFilter.Get2(filter);
                 ref var modelComponent = ref _movableFilter.Get3(filter);
-
+            
                 ref var enemyTransform = ref modelComponent.enemyTransform;
                 ref var playerTransform = ref directionComponent.targetTransform;
                 ref var speed = ref movableComponent.speed; 

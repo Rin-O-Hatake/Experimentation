@@ -1,19 +1,18 @@
-using System;
 using System.Collections.Generic;
-using MVVM;
+using Experimentation.MoneyProject.Scripts.Data.Interfaces;
 using Plugins.AltoCityUIPack.Scripts.Button;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 using Zenject.Scripts.Coins;
 
-namespace MoneyProject.Scripts.UI
+namespace Experimentation.MoneyProject.Scripts.UI
 {
-    public class BagView : MonoBehaviour
+    public class BagView : MonoBehaviour, IShowCoins
     {
         #region Fields
         
         [Title("Buttons")]
-        [Data("OnBuyClick")]
         [SerializeField] private UIButtonManagerCustom _buttonAddRandomCoin;
         [SerializeField] private UIButtonManagerCustom _buttonEndSet;
 
@@ -28,10 +27,27 @@ namespace MoneyProject.Scripts.UI
         
         private List<CoinUIView> _allCoins = new List<CoinUIView>();
         
-        private Action<bool> _endSetButton;
-        private Action<Action<BaseCoin>> _addRandomCoinButton;
+        private List<IAddRandomCoin> _addRandomCoinsInterfaces = new List<IAddRandomCoin>();
+        private List<ISaveCoins> _saveCoinsInterfaces = new List<ISaveCoins>();
 
         
+        #endregion
+
+        #region Initialize
+
+        [Inject]
+        public void Construct(IAddRandomCoin addRandomCoin)
+        {
+            _addRandomCoinsInterfaces.Add(addRandomCoin);
+        }
+        
+        [Inject]
+        public void Construct(ISaveCoins saveCoins)
+        {
+            _saveCoinsInterfaces.Add(saveCoins);
+        }
+
+
         #endregion
 
         #region MonoBehavior
@@ -49,16 +65,10 @@ namespace MoneyProject.Scripts.UI
         }
 
         #endregion
-
-        public void Initialize(Action<Action<BaseCoin>> addRandomCoinButton, Action<bool> endSetButton)
+        
+        public void ShowCoins(BaseCoin coin)
         {
-            _addRandomCoinButton = addRandomCoinButton;
-            _endSetButton = endSetButton;
-        }
-
-        private void ShowCoinsInTable(BaseCoin baseCoin)
-        {
-            var coinUIView = CreateCoin(baseCoin);
+            var coinUIView = CreateCoin(coin);
             _allCoins.Add(coinUIView);
         }
 
@@ -89,12 +99,19 @@ namespace MoneyProject.Scripts.UI
 
         private void AddRandomCoinButton()
         {
-            _addRandomCoinButton?.Invoke(ShowCoinsInTable);
+            foreach (var addRandomCoinsInterface in _addRandomCoinsInterfaces)
+            {
+                addRandomCoinsInterface.AddRandomCoin();
+            }
         }
 
         private void EndSetButton()
         {
-            _endSetButton?.Invoke(true);
+            foreach (var saveCoinsInterface in _saveCoinsInterfaces)
+            {
+                saveCoinsInterface.SaveCoins();
+            }
+            
             RemoveAllCoins();
         }
         #endregion

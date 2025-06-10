@@ -1,11 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject.Scripts.Coins;
 
-namespace MoneyProject.Scripts.UI
+namespace Experimentation.MoneyProject.Scripts.UI
 {
     public class CoinUIView : MonoBehaviour
     {
