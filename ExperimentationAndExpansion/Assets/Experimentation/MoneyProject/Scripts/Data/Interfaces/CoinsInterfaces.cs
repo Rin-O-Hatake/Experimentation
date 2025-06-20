@@ -16,4 +16,9 @@ namespace Experimentation.MoneyProject.Scripts.Data.Interfaces
     {
         void ShowCoins(BaseCoin coin);
     }
+
+    public interface ICastSkillView
+    {
+        void WoodCoinView();
+    }
 }

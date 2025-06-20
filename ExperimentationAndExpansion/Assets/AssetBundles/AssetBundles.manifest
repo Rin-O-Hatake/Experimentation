@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 878066597
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: maincontent/menu
+      Dependencies: {}

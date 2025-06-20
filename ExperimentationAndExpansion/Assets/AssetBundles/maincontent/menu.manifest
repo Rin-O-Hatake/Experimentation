@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 2151493317
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 71afec9dd75c1a104129a5e577c009e5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 71afec9dd75c1a104129a5e577c009e5
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/Sprites/213ADERVCdcdc.jpg
+Dependencies: []
