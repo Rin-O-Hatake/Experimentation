@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Experimentation.MoneyProject.Scripts.Coins;
 using Experimentation.MoneyProject.Scripts.Data.Interfaces;
 using UnityEngine;
 using Zenject;

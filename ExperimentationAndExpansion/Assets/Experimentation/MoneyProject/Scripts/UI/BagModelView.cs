@@ -1,3 +1,4 @@
+using Experimentation.MoneyProject.Scripts.Coins;
 using UnityEngine;
 using Zenject;
 using Zenject.Scripts.Coins;

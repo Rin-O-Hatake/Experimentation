@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Experimentation.MoneyProject.Scripts.Coins;
 using Experimentation.MoneyProject.Scripts.Data.Interfaces;
 using Experimentation.MoneyProject.Scripts.UI;
 using Sirenix.OdinInspector;

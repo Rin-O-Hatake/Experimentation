@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Experimentation.MoneyProject.Scripts.Coins;
 using Experimentation.MoneyProject.Scripts.Data.Interfaces;
 using Plugins.AltoCityUIPack.Scripts.Button;
 using Sirenix.OdinInspector;

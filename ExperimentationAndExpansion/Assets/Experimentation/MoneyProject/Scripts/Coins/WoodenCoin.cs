@@ -1,4 +1,5 @@
 using System;
+using Experimentation.MoneyProject.Scripts.Coins;
 using UnityEngine;
 
 namespace Zenject.Scripts.Coins

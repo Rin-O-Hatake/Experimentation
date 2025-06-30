@@ -1,4 +1,6 @@
-namespace Zenject.Scripts.Coins
+using Zenject.Scripts.Coins;
+
+namespace Experimentation.MoneyProject.Scripts.Coins
 {
     public abstract class BaseCoin
     {

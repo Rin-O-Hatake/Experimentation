@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
+using Zenject.Scripts.Coins;
 
-namespace Zenject.Scripts.Coins
+namespace Experimentation.MoneyProject.Scripts.Coins
 {
     public class GoldCoin : BaseCoin
     {

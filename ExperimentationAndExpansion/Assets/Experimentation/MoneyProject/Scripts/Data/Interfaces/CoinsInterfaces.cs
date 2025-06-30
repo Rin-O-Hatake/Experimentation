@@ -1,3 +1,4 @@
+using Experimentation.MoneyProject.Scripts.Coins;
 using Zenject.Scripts.Coins;
 
 namespace Experimentation.MoneyProject.Scripts.Data.Interfaces
