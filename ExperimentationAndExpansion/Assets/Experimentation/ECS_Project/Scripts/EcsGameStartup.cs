@@ -8,6 +8,10 @@ using Experimentation.ECS_Project.Scripts.Player.PlayerInit;
 using Experimentation.ECS_Project.Scripts.Player.PlayerInput;
 using Experimentation.ECS_Project.Scripts.Player.PlayerMove;
 using Experimentation.ECS_Project.Scripts.Player.Weapon;
+using Experimentation.ECS_Project.Scripts.Player.Weapon.Base;
+using Experimentation.ECS_Project.Scripts.Player.Weapon.Bullet;
+using Experimentation.ECS_Project.Scripts.Player.Weapon.Reload;
+using Experimentation.ECS_Project.Scripts.UI.Pause;
 using Leopotam.Ecs;
 using UnityEngine;
 using Voody.UniLeo;
@@ -22,6 +26,8 @@ namespace Experimentation.ECS_Project.Scripts
         private EcsWorld _world;
         private EcsSystems _systems;
         private EcsSystems _fixedUpdateSystems;
+        
+        public UI.UI ui;
 
         #region MonoBehavior
 
@@ -35,6 +41,7 @@ namespace Experimentation.ECS_Project.Scripts
 
             _systems
                 .Add(new PlayerInitSystem())
+                .OneFrame<TryReload>()
                 .Add(new PlayerInputSystem())
                 .Add(new PlayerRotationSystem())
                 .Add(new PlayerAnimationSystem())
@@ -44,8 +51,14 @@ namespace Experimentation.ECS_Project.Scripts
                 .Add(new ProjectileMoveSystem())
                 .Add(new ProjectileHitSystem())
                 .Add(new ReloadingSystem())
+                .Add(new PauseSystem())
+                .Add(new EnemyInitSystem())
+                .Add(new EnemyDeathSystem())
+                .Add(new EnemyFollowSystem())
+                .Add(new EnemyIdleSystem())
                 .Inject(configuration)
                 .Inject(sceneData)
+                .Inject(ui)
                 .Inject(runtimeData);
             
             _fixedUpdateSystems

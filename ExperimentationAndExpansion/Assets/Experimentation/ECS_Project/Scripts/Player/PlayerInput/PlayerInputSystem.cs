@@ -1,4 +1,7 @@
 using Experimentation.ECS_Project.Scripts.Player.Weapon;
+using Experimentation.ECS_Project.Scripts.Player.Weapon.Reload;
+using Experimentation.ECS_Project.Scripts.UI;
+using Experimentation.ECS_Project.Scripts.UI.Pause;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -6,6 +9,7 @@ namespace Experimentation.ECS_Project.Scripts.Player.PlayerInput
 {
     public class PlayerInputSystem : IEcsRunSystem
     {
+        private EcsWorld _ecsWorld;
         private EcsFilter<PlayerInputData, HasWeapon> filter;
     
         public void Run()
@@ -19,13 +23,18 @@ namespace Experimentation.ECS_Project.Scripts.Player.PlayerInput
                 input.shootInput = Input.GetMouseButton(0);
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-                    ref var weapon = ref hasWeapon.weapon.Get<Weapon.Weapon>();
+                    ref var weapon = ref hasWeapon.weapon.Get<Weapon.Base.Weapon>();
 
                     if (weapon.currentInMagazine < weapon.maxInMagazine)
                     {
                         ref var entity = ref filter.GetEntity(i);
                         entity.Get<TryReload>();
                     }
+                }
+                
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    _ecsWorld.NewEntity().Get<PauseEvent>();
                 }
             }
         }

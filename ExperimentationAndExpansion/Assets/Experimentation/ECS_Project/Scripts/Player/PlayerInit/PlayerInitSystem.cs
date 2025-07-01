@@ -12,6 +12,7 @@ namespace Experimentation.ECS_Project.Scripts.Player.PlayerInit
         private EcsWorld _ecsWorld;
         private StaticData _staticData;
         private SceneData _sceneData;
+        private UI.UI ui;
 
         public void Init()
         {
@@ -37,7 +38,7 @@ namespace Experimentation.ECS_Project.Scripts.Player.PlayerInit
 
             var weaponEntity = _ecsWorld.NewEntity();
             var weaponView = playerGO.GetComponentInChildren<WeaponSettings>();
-            ref var weapon = ref weaponEntity.Get<Weapon.Weapon>();
+            ref var weapon = ref weaponEntity.Get<Weapon.Base.Weapon>();
             weapon.owner = playerEntity;
             weapon.projectilePrefab = weaponView.ProjectilePrefab;
             weapon.projectileRadius = weaponView.ProjectileRadius;
@@ -53,6 +54,9 @@ namespace Experimentation.ECS_Project.Scripts.Player.PlayerInit
             playerGO.GetComponent<PlayerView>().entity = playerEntity;
 
             #endregion
+            
+            ui.gameScreen.SetCurrentInMagazine(weapon.currentInMagazine);
+            ui.gameScreen.SetTotalAmmo(weapon.totalAmmo);
         }
     }
 }
