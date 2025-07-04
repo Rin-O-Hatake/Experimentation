@@ -178,6 +178,7 @@ MonoBehaviour:
   _roundValue: 0
   _pixelsUnitBackgroundValue: 11.1
   _handleImage: {fileID: 5416241009969868125}
+  _customHandle: {fileID: 0}
   _handleColor: {r: 0.654902, g: 0.70980394, b: 0.8039216, a: 1}
   _fillImage: {fileID: 5416570255246043429}
   _fillColor: {r: 0.654902, g: 0.70980394, b: 0.8039216, a: 1}
